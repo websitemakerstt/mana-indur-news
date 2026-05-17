@@ -31,6 +31,11 @@ export const metadata: Metadata = {
     default: 'Mana Indur News | Latest Telugu News Portal',
   },
   description: "Mana Indur News provides latest news from Andhra Pradesh, Telangana, India and around the world.",
+  icons: {
+    icon: '/websiteLogo.jpeg',
+    shortcut: '/websiteLogo.jpeg',
+    apple: '/websiteLogo.jpeg',
+  },
 };
 
 export default function RootLayout({

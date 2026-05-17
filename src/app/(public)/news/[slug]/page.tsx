@@ -26,13 +26,33 @@ export async function generateMetadata(
     };
   }
 
+  const imageUrl = article.featured_image 
+    ? (article.featured_image.startsWith('http') ? article.featured_image : 'https://www.manaindurnews.in' + article.featured_image) 
+    : 'https://www.manaindurnews.in/websiteLogo.jpeg';
+
   return {
     title: article.meta_title || article.title,
     description: article.meta_description || article.excerpt,
     openGraph: {
       title: article.meta_title || article.title,
       description: article.meta_description || article.excerpt,
-      images: article.featured_image ? [article.featured_image] : [],
+      url: `https://www.manaindurnews.in/news/${article.slug}`,
+      siteName: 'Mana Indur News',
+      type: 'article',
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: article.title,
+        }
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: article.meta_title || article.title,
+      description: article.meta_description || article.excerpt,
+      images: [imageUrl],
     },
   };
 }
@@ -111,11 +131,9 @@ export default async function ArticlePage({ params }: Props) {
                   <span className="border-l pl-2 border-gray-200">Share</span>
                   {/* Subtle right-pointing arrow element */}
                   <div className="absolute top-[35%] -right-1.5 w-3 h-3 bg-white border-t border-r border-gray-200 rotate-45 z-10" />
-                </div>
-
-                {/* Facebook (Dark Blue) */}
+                </div>                 {/* Facebook (Dark Blue) */}
                 <a 
-                  href={`https://www.facebook.com/sharer/sharer.php?u=https://manaindurnews.com/news/${article.slug}`} 
+                  href={`https://www.facebook.com/sharer/sharer.php?u=https://www.manaindurnews.in/news/${article.slug}`} 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="w-10 h-10 bg-[#4e69a2] hover:bg-[#3b5998] text-white flex items-center justify-center rounded shadow-xs transition-colors duration-200 cursor-pointer"
@@ -128,7 +146,7 @@ export default async function ArticlePage({ params }: Props) {
 
                 {/* X (Cyan / Light Blue) */}
                 <a 
-                  href={`https://twitter.com/intent/tweet?url=https://manaindurnews.com/news/${article.slug}&text=${encodeURIComponent(article.title)}`} 
+                  href={`https://twitter.com/intent/tweet?url=https://www.manaindurnews.in/news/${article.slug}&text=${encodeURIComponent(article.title)}`} 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="w-10 h-10 bg-[#26c6da] hover:bg-[#00abf0] text-white flex items-center justify-center rounded shadow-xs transition-colors duration-200 cursor-pointer"
@@ -141,7 +159,7 @@ export default async function ArticlePage({ params }: Props) {
 
                 {/* Pinterest (Red) */}
                 <a 
-                  href={`https://pinterest.com/pin/create/button/?url=https://manaindurnews.com/news/${article.slug}&media=${encodeURIComponent(article.featured_image || '')}&description=${encodeURIComponent(article.title)}`} 
+                  href={`https://pinterest.com/pin/create/button/?url=https://www.manaindurnews.in/news/${article.slug}&media=${encodeURIComponent(article.featured_image || '')}&description=${encodeURIComponent(article.title)}`} 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="w-10 h-10 bg-[#cb2027] hover:bg-[#a61a20] text-white flex items-center justify-center rounded shadow-xs transition-colors duration-200 cursor-pointer"
@@ -154,7 +172,7 @@ export default async function ArticlePage({ params }: Props) {
 
                 {/* WhatsApp (Green) */}
                 <a 
-                  href={`https://api.whatsapp.com/send?text=${encodeURIComponent(article.title + ' https://manaindurnews.com/news/' + article.slug)}`} 
+                  href={`https://api.whatsapp.com/send?text=${encodeURIComponent(article.title + ' https://www.manaindurnews.in/news/' + article.slug)}`} 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="w-10 h-10 bg-[#70c050] hover:bg-[#5cbe62] text-white flex items-center justify-center rounded shadow-xs transition-colors duration-200 cursor-pointer"
