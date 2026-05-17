@@ -151,21 +151,44 @@ export async function getCategories(): Promise<PublicCategory[]> {
  */
 export async function searchArticles(query: string): Promise<PublicArticle[]> {
   if (!query) return [];
-  const { data, error } = await supabase
-    .from('articles')
-    .select(`
-      *,
-      category:categories(id, name, slug)
-    `)
-    .eq('status', 'published')
-    .or(`title.ilike.%${query}%,slug.ilike.%${query}%`)
-    .order('created_at', { ascending: false });
+  
+  try {
+    // 1. Fetch categories matching the query slug
+    const { data: matchedCategories } = await supabase
+      .from('categories')
+      .select('id')
+      .ilike('slug', `%${query}%`);
+      
+    const matchedCategoryIds = matchedCategories?.map((c) => c.id) || [];
+    
+    // 2. Build article search query
+    let baseQuery = supabase
+      .from('articles')
+      .select(`
+        *,
+        category:categories(id, name, slug)
+      `)
+      .eq('status', 'published');
 
-  if (error) {
-    console.error('Error searching articles:', error);
+    if (matchedCategoryIds.length > 0) {
+      // Match by title, slug, OR matching category_id
+      baseQuery = baseQuery.or(`title.ilike.%${query}%,slug.ilike.%${query}%,category_id.in.(${matchedCategoryIds.join(',')})`);
+    } else {
+      // Fallback to title or slug
+      baseQuery = baseQuery.or(`title.ilike.%${query}%,slug.ilike.%${query}%`);
+    }
+
+    const { data, error } = await baseQuery.order('created_at', { ascending: false });
+
+    if (error) {
+      console.error('Error searching articles:', error);
+      return [];
+    }
+    return (data as any) || [];
+  } catch (error) {
+    console.error('Failed to perform category-slug-based article search:', error);
     return [];
   }
-  return (data as any) || [];
 }
 
 /**
