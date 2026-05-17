@@ -43,13 +43,45 @@ export function Header({ categories }: { categories: Category[] }) {
   return (
     <header className={cn(
       "w-full z-50 sticky top-0 transition-all duration-300 border-b border-border/80 bg-white",
-      isScrolled ? "shadow-md py-2" : "shadow-sm py-4"
+      isScrolled ? "shadow-md py-2" : "shadow-sm py-3"
     )}>
+      {/* Mobile Big Logo Banner (visible only at the top of the page on mobile) */}
+      <div className={cn(
+        "lg:hidden w-full flex justify-center bg-white transition-all duration-300 overflow-hidden",
+        isScrolled ? "h-0 opacity-0" : "h-28 py-3 border-b border-gray-100"
+      )}>
+        <Link href="/" className="relative h-full w-80 block">
+          <Image
+            src="/websiteLogo.jpeg"
+            alt="Mana Indur News"
+            fill
+            className="object-contain"
+            priority
+          />
+        </Link>
+      </div>
+
       <div className="w-full pl-[10px] pr-4 md:pr-8 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2">
+        {/* Mobile Left Hamburger (visible only on mobile at the top of the page) */}
+        <Button
+          variant="ghost"
+          className={cn(
+            "lg:hidden h-11 w-11 p-0 flex items-center justify-center rounded-lg hover:bg-gray-100",
+            isScrolled ? "hidden" : "flex"
+          )}
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        >
+          {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+        </Button>
+
+        {/* Logo (always visible on desktop; on mobile, only when page is scrolled) */}
+        <Link href="/" className={cn(
+          "flex items-center gap-2 transition-all duration-300",
+          !isScrolled ? "hidden lg:flex" : "flex"
+        )}>
           <div className={cn(
             "relative transition-all duration-300",
-            isScrolled ? "h-16 w-64" : "h-20 w-72"
+            isScrolled ? "h-12 w-48" : "h-16 w-64"
           )}>
             <Image
               src="/websiteLogo.jpeg"
@@ -76,6 +108,7 @@ export function Header({ categories }: { categories: Category[] }) {
         </nav>
 
         <div className="flex items-center gap-2">
+          {/* Search Button */}
           <Button
             variant="ghost"
             onClick={() => {
@@ -89,9 +122,14 @@ export function Header({ categories }: { categories: Category[] }) {
           >
             {pathname === '/search' ? <X size={24} className="text-red-600 animate-pulse" /> : <Search size={24} />}
           </Button>
+
+          {/* Mobile Right Hamburger (visible on mobile only when page is scrolled) */}
           <Button
             variant="ghost"
-            className="lg:hidden h-11 w-11 p-0 flex items-center justify-center rounded-lg hover:bg-gray-100"
+            className={cn(
+              "lg:hidden h-11 w-11 p-0 items-center justify-center rounded-lg hover:bg-gray-100",
+              isScrolled ? "flex" : "hidden"
+            )}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
