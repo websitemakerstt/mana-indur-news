@@ -5,15 +5,15 @@ import { Mail, Phone } from 'lucide-react';
 export function Footer() {
   return (
     <footer className="bg-gray-900 text-white pt-12 pb-6">
-      <div className="w-full px-4 md:px-8">
+      <div className="w-full pl-2 pr-4 md:pl-4 md:pr-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           <div className="space-y-4">
-            <Link href="/" className="inline-block relative h-12 w-48 invert grayscale brightness-200">
+            <Link href="/" className="inline-block relative h-12 w-48 bg-white p-1.5 rounded-lg shadow-sm">
               <Image 
                 src="/websiteLogo.jpeg" 
                 alt="Mana Indur News" 
                 fill 
-                className="object-contain"
+                className="object-contain object-left p-0.5"
               />
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed">
