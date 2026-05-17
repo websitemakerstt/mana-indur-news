@@ -22,7 +22,7 @@ export function Header({ categories }: { categories: Category[] }) {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 80);
+      setIsScrolled(window.scrollY > 100);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -42,14 +42,14 @@ export function Header({ categories }: { categories: Category[] }) {
 
   return (
     <>
-      {/* Mobile Big Logo Banner (exactly half screen width, scales with responsive aspect ratio) */}
-      <div className="lg:hidden w-full flex justify-center bg-white py-4 border-b border-gray-100">
-        <Link href="/" className="relative w-1/2 aspect-[3.6/1] block">
+      {/* Mobile Big Logo Banner (part of normal scroll flow, scrolls away naturally) */}
+      <div className="lg:hidden w-full flex justify-center bg-white h-36 px-[50px] py-4 border-b border-gray-100">
+        <Link href="/" className="relative h-full w-full block">
           <Image
             src="/websiteLogo.jpeg"
             alt="Mana Indur News"
             fill
-            className="object-contain"
+            className="object-contain object-center"
             priority
           />
         </Link>
