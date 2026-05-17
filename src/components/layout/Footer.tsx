@@ -8,11 +8,14 @@ export function Footer() {
       <div className="w-full pl-[10px] pr-4 md:pr-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           <div className="space-y-4">
-            <Link href="/" className="inline-block relative h-12 w-48 bg-white p-1.5 rounded-lg shadow-sm">
-              <Image 
-                src="/websiteLogo.jpeg" 
-                alt="Mana Indur News" 
-                fill 
+            <Link
+              href="/"
+              className="inline-block relative h-20 w-72 p-1.5 rounded-lg shadow-sm"
+            >
+              <Image
+                src="/websiteLogo.jpeg"
+                alt="Mana Indur News"
+                fill
                 className="object-contain object-left p-0.5"
               />
             </Link>
@@ -59,15 +62,15 @@ export function Footer() {
             </ul>
           </div>
         </div>
-        
+
         <div className="border-t border-gray-800 pt-6 flex flex-col items-center justify-center text-gray-500 text-xs">
           <p>&copy; {new Date().getFullYear()} Mana Indur News. అన్ని హక్కులూ ప్రత్యేకించుకోబడినవి.</p>
           <div className="mt-4 flex items-center gap-3">
             <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-red-600">
-              <Image 
-                src="/editorImage.jpeg" 
-                alt="KARKA RAMESH" 
-                fill 
+              <Image
+                src="/editorImage.jpeg"
+                alt="KARKA RAMESH"
+                fill
                 className="object-cover"
               />
             </div>

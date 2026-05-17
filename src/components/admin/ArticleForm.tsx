@@ -203,30 +203,6 @@ export function ArticleForm({ initialData }: ArticleFormProps) {
             </div>
           </CardContent>
         </Card>
-
-        <Card>
-          <CardHeader>
-            <CardTitle>SEO Settings</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="meta_title">Meta Title</Label>
-              <Input
-                id="meta_title"
-                value={formData.meta_title}
-                onChange={(e) => setFormData({ ...formData, meta_title: e.target.value })}
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="meta_description">Meta Description</Label>
-              <Textarea
-                id="meta_description"
-                value={formData.meta_description}
-                onChange={(e) => setFormData({ ...formData, meta_description: e.target.value })}
-              />
-            </div>
-          </CardContent>
-        </Card>
       </div>
 
       <div className="space-y-6">
