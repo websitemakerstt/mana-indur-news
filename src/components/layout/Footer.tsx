@@ -79,6 +79,9 @@ export function Footer() {
               <p className="text-[10px]">చీఫ్ ఎడిటర్</p>
             </div>
           </div>
+          <p className="mt-4 text-[10px] text-gray-600 font-semibold tracking-wide uppercase">
+            Developed by <span className="text-red-500/80 font-bold hover:text-red-500 transition-colors">Sravi Digi Hub</span>
+          </p>
         </div>
       </div>
     </footer>
