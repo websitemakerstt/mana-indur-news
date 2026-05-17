@@ -41,7 +41,7 @@ export function Header({ categories }: { categories: Category[] }) {
   }, [isMenuOpen]);
 
   return (
-    <header className="w-full bg-white z-50">
+    <>
       {/* Mobile Big Logo Banner (part of normal scroll flow, scrolls away naturally) */}
       <div className="lg:hidden w-full flex justify-center bg-white h-28 py-3 border-b border-gray-100">
         <Link href="/" className="relative h-full w-80 block">
@@ -55,8 +55,8 @@ export function Header({ categories }: { categories: Category[] }) {
         </Link>
       </div>
 
-      {/* Main Navigation Bar (Sticks perfectly at top-0 when scrolled) */}
-      <div className={cn(
+      {/* Main Sticky Header (Sticks perfectly to the top of the body viewport) */}
+      <header className={cn(
         "w-full z-50 sticky top-0 transition-all duration-300 border-b border-border/80 bg-white",
         isScrolled ? "shadow-md py-2" : "shadow-sm py-3"
       )}>
@@ -160,7 +160,7 @@ export function Header({ categories }: { categories: Category[] }) {
             </nav>
           </div>
         )}
-      </div>
-    </header>
+      </header>
+    </>
   );
 }
