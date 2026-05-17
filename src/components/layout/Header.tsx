@@ -63,12 +63,12 @@ export function Header({ categories }: { categories: Category[] }) {
           <Button
             variant="ghost"
             className={cn(
-              "lg:hidden h-11 w-11 p-0 flex items-center justify-center rounded-lg hover:bg-gray-100",
+              "lg:hidden h-12 w-12 p-0 flex items-center justify-center rounded-lg hover:bg-gray-100",
               isScrolled ? "hidden" : "flex"
             )}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
-            {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+            {isMenuOpen ? <X size={32} /> : <Menu size={32} />}
           </Button>
 
           {/* Logo (always visible on desktop; on mobile, only when page is scrolled) */}
@@ -78,7 +78,7 @@ export function Header({ categories }: { categories: Category[] }) {
           )}>
             <div className={cn(
               "relative transition-all duration-300",
-              isScrolled ? "h-12 w-48" : "h-16 w-64"
+              isScrolled ? "h-14 w-56" : "h-16 w-64"
             )}>
               <Image
                 src="/websiteLogo.jpeg"
@@ -115,21 +115,21 @@ export function Header({ categories }: { categories: Category[] }) {
                   router.push('/search');
                 }
               }}
-              className="h-11 w-11 p-0 flex items-center justify-center rounded-lg hover:bg-gray-100"
+              className="h-12 w-12 p-0 flex items-center justify-center rounded-lg hover:bg-gray-100"
             >
-              {pathname === '/search' ? <X size={24} className="text-red-600 animate-pulse" /> : <Search size={24} />}
+              {pathname === '/search' ? <X size={28} className="text-red-600 animate-pulse" /> : <Search size={28} />}
             </Button>
 
             {/* Mobile Right Hamburger (visible on mobile only when page is scrolled) */}
             <Button
               variant="ghost"
               className={cn(
-                "lg:hidden h-11 w-11 p-0 items-center justify-center rounded-lg hover:bg-gray-100",
+                "lg:hidden h-12 w-12 p-0 items-center justify-center rounded-lg hover:bg-gray-100",
                 isScrolled ? "flex" : "hidden"
               )}
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
-              {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+              {isMenuOpen ? <X size={32} /> : <Menu size={32} />}
             </Button>
           </div>
         </div>
