@@ -51,14 +51,25 @@ export default async function Home() {
             </span>
             బ్రేకింగ్ న్యూస్
           </div>
-          <div className="flex-1 overflow-hidden relative">
-            <div className="animate-marquee whitespace-nowrap inline-block">
-              {breakingNews.map((news, i) => (
-                <span key={news.id} className="mx-4">
-                  <Link href={`/news/${news.slug}`} className="hover:underline font-heading">
+          <div className="flex-1 overflow-hidden relative flex">
+            {/* Dual identical lists for seamless endless scrolling */}
+            <div className="animate-marquee whitespace-nowrap flex-shrink-0 flex items-center">
+              {breakingNews.map((news) => (
+                <span key={news.id + '-marquee-1'} className="inline-flex items-center">
+                  <Link href={`/news/${news.slug}`} className="hover:underline font-heading text-sm font-semibold tracking-wide">
                     {news.title}
                   </Link>
-                  {i < breakingNews.length - 1 && <span className="mx-4">|</span>}
+                  <span className="mx-6 text-red-200 text-base font-bold">•</span>
+                </span>
+              ))}
+            </div>
+            <div className="animate-marquee whitespace-nowrap flex-shrink-0 flex items-center" aria-hidden="true">
+              {breakingNews.map((news) => (
+                <span key={news.id + '-marquee-2'} className="inline-flex items-center">
+                  <Link href={`/news/${news.slug}`} className="hover:underline font-heading text-sm font-semibold tracking-wide">
+                    {news.title}
+                  </Link>
+                  <span className="mx-6 text-red-200 text-base font-bold">•</span>
                 </span>
               ))}
             </div>

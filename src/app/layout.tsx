@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Noto_Sans_Telugu, Lora, Noto_Serif_Telugu } from "next/font/google";
 import "./globals.css";
+import { PageTransitionLoader } from "@/components/layout/PageTransitionProvider";
 
 const inter = Inter({
   variable: "--font-sans",
@@ -44,6 +45,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col font-sans" suppressHydrationWarning>
+        <PageTransitionLoader />
         {children}
       </body>
     </html>
