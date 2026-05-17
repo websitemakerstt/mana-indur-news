@@ -80,7 +80,7 @@ export function Footer() {
             </div>
           </div>
           <p className="mt-4 text-[10px] text-gray-600 font-semibold tracking-wide uppercase">
-            Developed by <span className="text-red-500/80 font-bold hover:text-red-500 transition-colors">Sravi Digi Hub</span>
+            Developed by <span className="text-red-500/80 font-bold hover:text-red-500 transition-colors">Sravi Digi Hub</span> <span className="mt-4 text-[10px] text-gray-600 font-semibold tracking-wide uppercase">9160304804</span>
           </p>
         </div>
       </div>

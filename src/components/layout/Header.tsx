@@ -24,7 +24,9 @@ export function Header({ categories }: { categories: Category[] }) {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 100);
     };
+
     window.addEventListener('scroll', handleScroll);
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -35,6 +37,7 @@ export function Header({ categories }: { categories: Category[] }) {
     } else {
       document.body.style.overflow = '';
     }
+
     return () => {
       document.body.style.overflow = '';
     };
@@ -42,7 +45,7 @@ export function Header({ categories }: { categories: Category[] }) {
 
   return (
     <>
-      {/* Mobile Big Logo Banner (part of normal scroll flow, scrolls away naturally) */}
+      {/* Mobile Big Logo Banner */}
       <div className="lg:hidden w-full bg-white py-4 px-[50px] border-b border-gray-100 flex justify-center">
         <Link href="/" className="w-full block">
           <img
@@ -53,33 +56,44 @@ export function Header({ categories }: { categories: Category[] }) {
         </Link>
       </div>
 
-      {/* Main Sticky Header (Sticks perfectly to the top of the body viewport) */}
-      <header className={cn(
-        "w-full z-50 sticky top-0 transition-all duration-300 border-b border-border/80 bg-white",
-        isScrolled ? "shadow-md py-2" : "shadow-sm py-3"
-      )}>
+      {/* Main Sticky Header */}
+      <header
+        className={cn(
+          'w-full z-50 sticky top-0 transition-all duration-300 border-b border-border/80 bg-white',
+          isScrolled ? 'shadow-md py-2' : 'shadow-sm py-3'
+        )}
+      >
         <div className="w-full pl-[10px] pr-4 md:pr-8 flex items-center justify-between">
-          {/* Mobile Left Hamburger (visible only on mobile at the top of the page) */}
+          {/* Mobile Left Hamburger */}
           <Button
             variant="ghost"
             className={cn(
-              "lg:hidden h-11 w-11 p-0 flex items-center justify-center rounded-lg hover:bg-gray-100",
-              isScrolled ? "hidden" : "flex"
+              'lg:hidden h-12 w-12 p-0 flex items-center justify-center rounded-lg hover:bg-gray-100',
+              isScrolled ? 'hidden' : 'flex'
             )}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
-            {isMenuOpen ? <X size={30} className="w-[30px] h-[30px]" /> : <Menu size={30} className="w-[30px] h-[30px]" />}
+            {isMenuOpen ? (
+              <X size={26} className="size-6" />
+            ) : (
+              <Menu size={26} className="size-6" />
+            )}
           </Button>
 
-          {/* Logo (always visible on desktop; on mobile, only when page is scrolled) */}
-          <Link href="/" className={cn(
-            "flex items-center gap-2 transition-all duration-300",
-            !isScrolled ? "hidden lg:flex" : "flex"
-          )}>
-            <div className={cn(
-              "relative transition-all duration-300",
-              isScrolled ? "h-[54px] w-[216px]" : "h-16 w-64"
-            )}>
+          {/* Logo */}
+          <Link
+            href="/"
+            className={cn(
+              'flex items-center gap-2 transition-all duration-300',
+              !isScrolled ? 'hidden lg:flex' : 'flex'
+            )}
+          >
+            <div
+              className={cn(
+                'relative transition-all duration-300',
+                isScrolled ? 'h-14 w-56' : 'h-16 w-64'
+              )}
+            >
               <Image
                 src="/websiteLogo.jpeg"
                 alt="Mana Indur News"
@@ -92,7 +106,13 @@ export function Header({ categories }: { categories: Category[] }) {
 
           {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center gap-6">
-            <Link href="/" className="font-bold hover:text-red-600 transition-colors">HOME</Link>
+            <Link
+              href="/"
+              className="font-bold hover:text-red-600 transition-colors"
+            >
+              HOME
+            </Link>
+
             {categories.map((category) => (
               <Link
                 key={category.id}
@@ -115,26 +135,37 @@ export function Header({ categories }: { categories: Category[] }) {
                   router.push('/search');
                 }
               }}
-              className="h-11 w-11 p-0 flex items-center justify-center rounded-lg hover:bg-gray-100"
+              className="h-12 w-12 p-0 flex items-center justify-center rounded-lg hover:bg-gray-100"
             >
-              {pathname === '/search' ? <X size={26} className="w-[26px] h-[26px] text-red-600 animate-pulse" /> : <Search size={26} className="w-[26px] h-[26px]" />}
+              {pathname === '/search' ? (
+                <X
+                  size={26}
+                  className="size-6 text-red-600 animate-pulse"
+                />
+              ) : (
+                <Search size={26} className="size-6" />
+              )}
             </Button>
 
-            {/* Mobile Right Hamburger (visible on mobile only when page is scrolled) */}
+            {/* Mobile Right Hamburger */}
             <Button
               variant="ghost"
               className={cn(
-                "lg:hidden h-11 w-11 p-0 items-center justify-center rounded-lg hover:bg-gray-100",
-                isScrolled ? "flex" : "hidden"
+                'lg:hidden h-12 w-12 p-0 items-center justify-center rounded-lg hover:bg-gray-100',
+                isScrolled ? 'flex' : 'hidden'
               )}
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
-              {isMenuOpen ? <X size={30} className="w-[30px] h-[30px]" /> : <Menu size={30} className="w-[30px] h-[30px]" />}
+              {isMenuOpen ? (
+                <X size={26} className="size-6" />
+              ) : (
+                <Menu size={26} className="size-6" />
+              )}
             </Button>
           </div>
         </div>
 
-        {/* Mobile Menu (nested inside the sticky bar so it remains accessible when open) */}
+        {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="lg:hidden bg-white border-b absolute w-full left-0 z-50 shadow-xl max-h-[calc(100vh-60px)] overflow-y-auto">
             <nav className="flex flex-col p-4">
@@ -145,6 +176,7 @@ export function Header({ categories }: { categories: Category[] }) {
               >
                 HOME
               </Link>
+
               {categories.map((category) => (
                 <Link
                   key={category.id}
