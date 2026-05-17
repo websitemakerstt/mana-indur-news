@@ -68,7 +68,7 @@ export function Header({ categories }: { categories: Category[] }) {
             )}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
-            {isMenuOpen ? <X size={32} /> : <Menu size={32} />}
+            {isMenuOpen ? <X size={32} className="size-8" /> : <Menu size={32} className="size-8" />}
           </Button>
 
           {/* Logo (always visible on desktop; on mobile, only when page is scrolled) */}
@@ -117,7 +117,7 @@ export function Header({ categories }: { categories: Category[] }) {
               }}
               className="h-12 w-12 p-0 flex items-center justify-center rounded-lg hover:bg-gray-100"
             >
-              {pathname === '/search' ? <X size={28} className="text-red-600 animate-pulse" /> : <Search size={28} />}
+              {pathname === '/search' ? <X size={28} className="size-7 text-red-600 animate-pulse" /> : <Search size={28} className="size-7" />}
             </Button>
 
             {/* Mobile Right Hamburger (visible on mobile only when page is scrolled) */}
@@ -129,7 +129,7 @@ export function Header({ categories }: { categories: Category[] }) {
               )}
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
-              {isMenuOpen ? <X size={32} /> : <Menu size={32} />}
+              {isMenuOpen ? <X size={32} className="size-8" /> : <Menu size={32} className="size-8" />}
             </Button>
           </div>
         </div>
