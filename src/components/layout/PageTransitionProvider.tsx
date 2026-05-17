@@ -107,7 +107,7 @@ function PageTransitionLoaderInner() {
         style={{ width: `${progress}%` }}
       />
 
-      {/* Screen blur + glassmorphism center loader overlay */}
+      {/* Screen blur + simple circle loader overlay */}
       {showSpinner && (
         <div className="fixed inset-0 bg-black/10 backdrop-blur-[1.5px] z-[9998] flex items-center justify-center animate-fade-in-loader">
           <style>{`
@@ -119,16 +119,8 @@ function PageTransitionLoaderInner() {
               animation: fadeInLoader 0.25s ease-out forwards;
             }
           `}</style>
-          <div className="bg-white/95 shadow-xl rounded-2xl p-4 flex flex-col items-center gap-3 border border-red-50/60 max-w-[140px] w-full text-center">
-            {/* Pulsing editorial spinner */}
-            <div className="relative flex h-8 w-8 items-center justify-center">
-              <div className="animate-spin rounded-full h-8 w-8 border-3 border-red-100 border-t-red-600"></div>
-              <div className="absolute h-2 w-2 rounded-full bg-red-600 animate-ping"></div>
-            </div>
-            <span className="text-[11px] font-bold text-gray-700 uppercase tracking-widest leading-none">
-              చదువుతోంది...
-            </span>
-          </div>
+          {/* Simple high-fidelity circle loader */}
+          <div className="animate-spin rounded-full h-10 w-10 border-[3.5px] border-red-100 border-t-red-600 shadow-sm"></div>
         </div>
       )}
     </>
