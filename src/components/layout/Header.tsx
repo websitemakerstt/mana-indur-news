@@ -45,7 +45,7 @@ export function Header({ categories }: { categories: Category[] }) {
       "w-full z-50 sticky top-0 transition-all duration-300 border-b border-border/80 bg-white",
       isScrolled ? "shadow-md py-2" : "shadow-sm py-4"
     )}>
-      <div className="container mx-auto px-4 flex items-center justify-between">
+      <div className="w-full px-4 md:px-8 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
           <div className={cn(
             "relative transition-all duration-300",
@@ -78,7 +78,6 @@ export function Header({ categories }: { categories: Category[] }) {
         <div className="flex items-center gap-2">
           <Button 
             variant="ghost" 
-            size="icon" 
             onClick={() => {
               if (pathname === '/search') {
                 router.push('/');
@@ -86,16 +85,16 @@ export function Header({ categories }: { categories: Category[] }) {
                 router.push('/search');
               }
             }}
+            className="h-11 w-11 p-0 flex items-center justify-center rounded-lg hover:bg-gray-100"
           >
-            {pathname === '/search' ? <X size={20} className="text-red-600 animate-pulse" /> : <Search size={20} />}
+            {pathname === '/search' ? <X size={24} className="text-red-600 animate-pulse" /> : <Search size={24} />}
           </Button>
           <Button 
             variant="ghost" 
-            size="icon" 
-            className="lg:hidden"
+            className="lg:hidden h-11 w-11 p-0 flex items-center justify-center rounded-lg hover:bg-gray-100"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </Button>
         </div>
       </div>
