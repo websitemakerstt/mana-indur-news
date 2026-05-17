@@ -184,7 +184,7 @@ export default async function Home() {
                 </h2>
               </div>
               <Link 
-                href="/search?q=breaking" 
+                href="/search?type=breaking" 
                 className="text-xs md:text-sm font-bold text-red-600 hover:text-red-700 flex items-center gap-1 group transition-colors cursor-pointer"
               >
                 <span>అన్ని చూడండి / See All</span>

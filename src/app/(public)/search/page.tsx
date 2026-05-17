@@ -7,7 +7,7 @@ import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Clock, ArrowLeft, X } from 'lucide-react';
-import { searchArticles } from '@/services/public-api';
+import { searchArticles, getPublishedArticles } from '@/services/public-api';
 
 // Simple debounce hook
 function useDebounce<T>(value: T, delay: number): T {
@@ -23,14 +23,22 @@ function SearchContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const initialQuery = searchParams.get('q') ?? '';
-  const [query, setQuery] = useState(initialQuery);
+  const isBreakingType = searchParams.get('type') === 'breaking';
+  
+  const [query, setQuery] = useState(isBreakingType ? '' : initialQuery);
   const debouncedQuery = useDebounce(query, 300);
   const [articles, setArticles] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
 
-  // fetch whenever debounced query changes
+  // fetch whenever debounced query or type changes
   useEffect(() => {
-    if (debouncedQuery.trim()) {
+    if (isBreakingType) {
+      setLoading(true);
+      getPublishedArticles({ isBreaking: true, limit: 50 }).then((results) => {
+        setArticles(results);
+        setLoading(false);
+      });
+    } else if (debouncedQuery.trim()) {
       setLoading(true);
       searchArticles(debouncedQuery).then((results) => {
         setArticles(results);
@@ -42,10 +50,15 @@ function SearchContent() {
       setArticles([]);
       router.replace('/search');
     }
-  }, [debouncedQuery, router]);
+  }, [debouncedQuery, isBreakingType, router]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setQuery(e.target.value);
+    const nextVal = e.target.value;
+    setQuery(nextVal);
+    if (isBreakingType && nextVal.trim() !== '') {
+      // Transition back to standard search since user is typing
+      router.replace(`/search?q=${encodeURIComponent(nextVal)}`);
+    }
   };
 
   return (
@@ -61,7 +74,9 @@ function SearchContent() {
       </div>
 
       <div className="flex items-center justify-between mb-6 border-b pb-4">
-        <h1 className="text-3xl font-bold text-gray-900">శోధన / Search</h1>
+        <h1 className="text-3xl font-bold text-gray-900">
+          {isBreakingType ? 'బ్రేకింగ్ న్యూస్ / Breaking News' : 'శోధన / Search'}
+        </h1>
         <button 
           onClick={() => router.push('/')}
           className="p-2 text-gray-500 hover:text-red-600 rounded-full hover:bg-gray-100 transition-colors"
@@ -71,20 +86,22 @@ function SearchContent() {
         </button>
       </div>
       
-      <div className="relative mb-8 max-w-2xl">
-        <input
-          type="text"
-          placeholder="వార్తలను శోధించండి... / Search articles in English or Telugu..."
-          value={query}
-          onChange={handleChange}
-          className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent transition-all shadow-sm text-base"
-        />
-        {loading && (
-          <div className="absolute right-4 top-3.5 flex items-center justify-center">
-            <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-red-600"></div>
-          </div>
-        )}
-      </div>
+      {!isBreakingType && (
+        <div className="relative mb-8 max-w-2xl">
+          <input
+            type="text"
+            placeholder="వార్తలను శోధించండి... / Search articles in English or Telugu..."
+            value={query}
+            onChange={handleChange}
+            className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent transition-all shadow-sm text-base"
+          />
+          {loading && (
+            <div className="absolute right-4 top-3.5 flex items-center justify-center">
+              <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-red-600"></div>
+            </div>
+          )}
+        </div>
+      )}
 
       {debouncedQuery && !loading && articles.length === 0 && (
         <p className="text-gray-500 mb-8">"{debouncedQuery}" కోసం ఫలితాలు ఏవీ కనుగొనబడలేదు. / No results found.</p>
