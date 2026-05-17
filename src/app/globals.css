@@ -137,3 +137,35 @@
     scroll-padding-top: 5.5rem;
   }
 }
+
+/* ==========================================
+   Premium Mobile Responsiveness Rules
+   ========================================== */
+
+/* Make all iframe embeds inside prose rich-text (e.g. YouTube) 100% responsive */
+.prose iframe,
+.prose [data-youtube-video] iframe {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 16 / 9 !important;
+  border-radius: 0.75rem !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+  margin-top: 1.5rem !important;
+  margin-bottom: 1.5rem !important;
+}
+
+/* Ensure rich-text images are responsive */
+.prose img {
+  max-width: 100% !important;
+  height: auto !important;
+  border-radius: 0.75rem !important;
+}
+
+/* Ensure rich-text tables are scrollable on narrow viewports */
+.prose table {
+  width: 100% !important;
+  display: block !important;
+  overflow-x: auto !important;
+  white-space: nowrap !important;
+}

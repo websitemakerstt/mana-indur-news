@@ -96,12 +96,12 @@ export function BreakingNewsPopup() {
       }`}
     >
       <div 
-        className={`bg-white w-full max-w-lg rounded-2xl shadow-2xl overflow-hidden border border-gray-100 relative transition-all duration-300 ease-out transform ${
+        className={`bg-white w-full max-w-md md:max-w-lg rounded-2xl shadow-2xl overflow-hidden border border-gray-100 relative flex flex-col max-h-[92vh] md:max-h-[90vh] transition-all duration-300 ease-out transform ${
           isOpen ? 'scale-100 translate-y-0' : 'scale-95 translate-y-4'
         }`}
       >
         {/* Top Header Alert Panel */}
-        <div className="bg-red-600 text-white px-5 py-3 flex items-center justify-between">
+        <div className="bg-red-600 text-white px-5 py-3 flex items-center justify-between flex-shrink-0">
           <div className="flex items-center gap-2">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
@@ -121,7 +121,7 @@ export function BreakingNewsPopup() {
         </div>
 
         {/* Modal Body */}
-        <div className="p-6">
+        <div className="p-5 md:p-6 overflow-y-auto flex-1 min-h-0">
           {/* Featured Image */}
           {article.featured_image && (article.featured_image.startsWith('http') || article.featured_image.startsWith('/')) && (
             <div className="relative aspect-video w-full overflow-hidden rounded-xl bg-gray-50 border border-gray-100 shadow-sm mb-4">
@@ -164,7 +164,7 @@ export function BreakingNewsPopup() {
         </div>
 
         {/* Call to Action Footer */}
-        <div className="px-6 pb-6 pt-2">
+        <div className="px-6 pb-6 pt-2 flex-shrink-0">
           <Link 
             href={`/news/${article.slug}`} 
             onClick={handleClose} 
