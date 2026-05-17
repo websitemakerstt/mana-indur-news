@@ -45,7 +45,7 @@ export function Header({ categories }: { categories: Category[] }) {
       "w-full z-50 sticky top-0 transition-all duration-300 border-b border-border/80 bg-white",
       isScrolled ? "shadow-md py-2" : "shadow-sm py-4"
     )}>
-      <div className="w-full pl-2 pr-4 md:pl-4 md:pr-8 flex items-center justify-between">
+      <div className="w-full pl-[10px] pr-4 md:pr-8 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
           <div className={cn(
             "relative transition-all duration-300",

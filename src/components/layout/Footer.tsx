@@ -5,7 +5,7 @@ import { Mail, Phone } from 'lucide-react';
 export function Footer() {
   return (
     <footer className="bg-gray-900 text-white pt-12 pb-6">
-      <div className="w-full pl-2 pr-4 md:pl-4 md:pr-8">
+      <div className="w-full pl-[10px] pr-4 md:pr-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           <div className="space-y-4">
             <Link href="/" className="inline-block relative h-12 w-48 bg-white p-1.5 rounded-lg shadow-sm">
