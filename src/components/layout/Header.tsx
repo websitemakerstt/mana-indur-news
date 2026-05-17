@@ -43,14 +43,12 @@ export function Header({ categories }: { categories: Category[] }) {
   return (
     <>
       {/* Mobile Big Logo Banner (part of normal scroll flow, scrolls away naturally) */}
-      <div className="lg:hidden w-full flex justify-center bg-white h-36 px-[50px] py-4 border-b border-gray-100">
-        <Link href="/" className="relative h-full w-full block">
-          <Image
+      <div className="lg:hidden w-full bg-white py-4 px-[50px] border-b border-gray-100 flex justify-center">
+        <Link href="/" className="w-full block">
+          <img
             src="/websiteLogo.jpeg"
             alt="Mana Indur News"
-            fill
-            className="object-contain object-center"
-            priority
+            className="w-full h-auto object-contain block mx-auto"
           />
         </Link>
       </div>
