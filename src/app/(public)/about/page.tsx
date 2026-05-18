@@ -34,22 +34,24 @@ export default function AboutPage() {
             </p>
 
             <h2 className="text-2xl font-bold text-gray-900 border-l-4 border-red-600 pl-3">Our Chief Editor</h2>
-            <div className="flex flex-col sm:flex-row items-center gap-6 bg-gray-50 p-6 rounded-xl my-8 border border-gray-100">
-              <div className="relative w-32 h-32 rounded-full overflow-hidden border-4 border-red-600 flex-shrink-0">
-                <Image 
-                  src="/editorImage.jpeg" 
-                  alt="KARKA RAMESH" 
-                  fill 
-                  className="object-cover"
-                />
+            <div className="bg-gray-50 p-6 rounded-xl my-8 border border-gray-100">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-red-600 flex-shrink-0">
+                  <Image 
+                    src="/editorImage.jpeg" 
+                    alt="KARKA RAMESH" 
+                    fill 
+                    className="object-cover"
+                  />
+                </div>
+                <div className="text-left">
+                  <h3 className="text-base font-bold text-gray-900 m-0">KARKA RAMESH</h3>
+                  <p className="text-[10px] text-red-600 font-semibold uppercase tracking-wider">Chief Editor & Founder</p>
+                </div>
               </div>
-              <div>
-                <h3 className="text-xl font-bold text-gray-900 m-0">KARKA RAMESH</h3>
-                <p className="text-red-600 font-medium mb-3">Chief Editor & Founder</p>
-                <p className="text-sm">
-                  With years of dedicated experience in journalism, Karka Ramesh leads Mana Indur News with a commitment to integrity, transparency, and relentless pursuit of the truth. Under his guidance, our editorial team works around the clock to ensure you are always informed.
-                </p>
-              </div>
+              <p className="text-sm text-gray-600 leading-relaxed">
+                With years of dedicated experience in journalism, Karka Ramesh leads Mana Indur News with a commitment to integrity, transparency, and relentless pursuit of the truth. Under his guidance, our editorial team works around the clock to ensure you are always informed.
+              </p>
             </div>
 
             <h2 className="text-2xl font-bold text-gray-900 border-l-4 border-red-600 pl-3">Why Choose Us?</h2>
