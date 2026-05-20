@@ -13,10 +13,10 @@ export default function AboutPage() {
         <div className="bg-white rounded-2xl shadow-sm p-8 md:p-12">
           <div className="flex flex-col items-center mb-10 border-b pb-10">
             <div className="relative w-48 h-16 mb-6">
-              <Image 
-                src="/websiteLogo.jpeg" 
-                alt="Mana Indur News" 
-                fill 
+              <Image
+                src="/websiteLogo.jpeg"
+                alt="Mana Indur News"
+                fill
                 className="object-contain"
               />
             </div>
@@ -27,30 +27,44 @@ export default function AboutPage() {
             <p>
               Welcome to <strong>Mana Indur News</strong>, your premier destination for the most accurate, timely, and comprehensive news coverage from Andhra Pradesh, Telangana, India, and around the globe.
             </p>
-            
+
             <h2 className="text-2xl font-bold text-gray-900 border-l-4 border-red-600 pl-3">Our Mission</h2>
             <p>
               At Mana Indur News, our mission is to empower our readers with truthful, unbiased, and fast news reporting. We believe in the power of information and its ability to shape our communities for the better. We focus on politics, entertainment, sports, and technology, bringing you stories that matter most to your daily life.
             </p>
 
-            <h2 className="text-2xl font-bold text-gray-900 border-l-4 border-red-600 pl-3">Our Chief Editor</h2>
-            <div className="bg-gray-50 p-6 rounded-xl my-8 border border-gray-100">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-red-600 flex-shrink-0">
-                  <Image 
-                    src="/editorImage.jpeg" 
-                    alt="KARKA RAMESH" 
-                    fill 
-                    className="object-cover"
-                  />
-                </div>
-                <div className="text-left">
-                  <h3 className="text-base font-bold text-gray-900 m-0">KARKA RAMESH</h3>
-                  <p className="text-[10px] text-red-600 font-semibold uppercase tracking-wider">Chief Editor & Founder</p>
-                </div>
+            <h2 className="text-2xl font-bold text-gray-900 border-l-4 border-red-600 pl-3">
+              Our Chief Editor
+            </h2>
+
+            <div className="bg-gray-50 p-8 rounded-2xl my-8 border border-gray-100 text-center">
+              {/* Centered Bigger Image */}
+              <div className="not-prose relative w-28 h-28 mx-auto rounded-full overflow-hidden border-4 border-red-600 shadow-lg">
+                <Image
+                  src="/editorImage.jpeg"
+                  alt="KARKA RAMESH"
+                  fill
+                  className="object-cover scale-110 -translate-y-5 -translate-x-1"
+                />
               </div>
-              <p className="text-sm text-gray-600 leading-relaxed">
-                With years of dedicated experience in journalism, Karka Ramesh leads Mana Indur News with a commitment to integrity, transparency, and relentless pursuit of the truth. Under his guidance, our editorial team works around the clock to ensure you are always informed.
+
+              {/* Name & Role */}
+              <div className="mt-5">
+                <h3 className="text-xl font-bold text-gray-900">
+                  KARKA RAMESH
+                </h3>
+
+                <p className="text-sm text-red-600 font-semibold uppercase tracking-[0.2em] mt-1">
+                  Chief Editor & Founder
+                </p>
+              </div>
+
+              {/* Description */}
+              <p className="text-sm text-gray-600 leading-relaxed mt-6 max-w-2xl mx-auto">
+                With years of dedicated experience in journalism, Karka Ramesh leads
+                Mana Indur News with a commitment to integrity, transparency, and
+                relentless pursuit of the truth. Under his guidance, our editorial team
+                works around the clock to ensure you are always informed.
               </p>
             </div>
 
